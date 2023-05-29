@@ -4,9 +4,9 @@ A website which uses Shrtcode API to shorten URLs.
 
 ## Features
 
-● Built a website which uses Shrtcode API to shorten URLs.
-● Implemented invalid URL detection functionality.
-● Fluid and responsive UI with ability to copy URLs for future use.
+1. Webapp to shorten URLs.
+2. Invalid URL detection functionality.
+3. Fluid and responsive UI with ability to copy URLs for future use.
 
 ## Demo
 
