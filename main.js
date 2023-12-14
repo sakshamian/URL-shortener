@@ -20,9 +20,20 @@ urlForm.addEventListener('submit',(e)=>{
 });
 
 async function getShortUrl(currUrl){
-    let serverData = await fetch(`
-    https://api.shrtco.de/v2/shorten?url=${currUrl}`);
+    let serverData = await fetch('https://url-shortener-service.p.rapidapi.com/shorten', {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/x-www-form-urlencoded',
+            'X-RapidAPI-Key': 'a6b9a6582amsh9ec090d9b167ff4p12202djsn065a9c008690',
+            'X-RapidAPI-Host': 'url-shortener-service.p.rapidapi.com'
+        },
+        body: new URLSearchParams({
+            url: currUrl
+        })
+    });
     
+    
+
     if(!serverData.ok){
         urlInputArea.style.borderStyle = "solid";
         urlInputArea.style.borderColor = 'hsl(0, 87%, 67%)';
@@ -31,8 +42,7 @@ async function getShortUrl(currUrl){
     }
 
     let jsonData = await serverData.json();
-    let results = jsonData.result.full_short_link;
-
+    let results = jsonData?.result_url;
     const resultContent = getHTML(results,currUrl);
     const resultContainer = document.createElement('div');
     resultContainer.classList.add('url-results');
